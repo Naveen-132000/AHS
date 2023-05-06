@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Display{% endblock %}
+{% block content %}
+<div>
+<div class="upload">
+  <div class="wrapper">
+    <div class="left">
+      <h2>Found Skills (Resume):</h2>
+      {{content}}
+    </div>
+  <div class="right">
+    <h2>Found Skills (JD):</h2>
+        {{JDtext}}
+    
+   
+   <!-- {% for item in JDtext %}
+		<p style="padding: 10px 0;whitespace: pre">{{ item }}</p>
+	{% endfor %}-->
+    
+  </div>
+</div>
+</div><center>
+<form method="post" action="/scrapes" enctype="multipart/form-data" class="form-inline">
+    <div class="form-group"style="padding-left: 0px;">
+    <button class="btn-success1" >FIND JOBS <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </form>
+  <form method="post" action="/compares" enctype="multipart/form-data" class="form-inline">
+    <div class="form-group" style="padding-left: 0px;">
+    <button class="btn-success2" >COMPARE JD AND RESUME<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </form></center>
+</div>
+</div>
+<div class="wrapper">
+<div class="Rtext">
+  <h2>Found Text in Resume:</h2><br>
+  {{Rtext}}
+    </div></div>
+</div>{% endblock %}

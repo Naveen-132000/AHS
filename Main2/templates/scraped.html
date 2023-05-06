@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}Display{% endblock %}
+{% block content %}
+
+
+<ul class="linksdisplay">
+{% for title, link in titles_and_links %}
+    <li class="scrapeli"><a href="{{ link }}">{{ title }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
