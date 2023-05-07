@@ -181,7 +181,7 @@ def upload():
                
                
                #Extracting skills from JD
-                with open("static/uploads/majorskils.txt", 'r') as f:
+                with open("static/uploads/majorskills2.txt", 'r') as f:
                         skills_list = [line.strip() for line in f.readlines()]
                 pattern1 = re.compile("|".join(map(re.escape, skills_list)), re.IGNORECASE)
                 matches1 = re.findall(pattern1, JDtext.lower())

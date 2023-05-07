@@ -13,13 +13,14 @@ def home():
     for line in lines:
         count+=1
         params = {
-    "api_key": "f9efcd58e8de137f2122cc2f86e66e786fa3b1ab247fafedba4e440b3b9ee7c1",
-    #"api_key": "9998b610e8e9fe2032ab34da16f4639cd13d17e2b30d01e9835d25983afa321c",
- 
+    #"api_key": "f9efcd58e8de137f2122cc2f86e66e786fa3b1ab247fafedba4e440b3b9ee7c1",
+    "api_key": "9998b610e8e9fe2032ab34da16f4639cd13d17e2b30d01e9835d25983afa321c",
+    
     "engine": "google",
     "q": line+" jobs india",
     "location": "Austin, Texas, United States",
     "google_domain": "google.com",
+    
     "gl": "us",
     "hl": "en",
         }

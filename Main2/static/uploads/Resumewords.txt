@@ -1,46 +1,50 @@
-Education.
-Communication
-Web Design
-Time management
-Tools usage
-PlanningWordpress
-C ,C++
-Html, Css, Js
-Mysql
-PythonAbout me.
-Hello! I'm Prajwal S , currently
-pursuing an engineering in
-Computer Science.I'm
-passionate towards learning
-new technologies that are
-booming in current industries. I
-will try to be innovative and
-focus on projects, which helps
-in the growth of career.
-CERTIFICATIONS 
-Face Recognition Application using
-Python
-GUVI PROJECTS .
-Virtual Mobile Emulator and shopping  
-Online web site where user can virtually use a new
-released mobile devices and have a glance at interface
-Freelance web project
-gemabacus.com
- Wordpress project for an institution which is a blog of an
-institution which collect form details of intrested student.
-Pre-UniversityReva University 2017 - 2019
-Completed Pre-University with 93 Percentage.
-Bachelor of EngineeringMVJ College of Engineering2019 - Present
-Currently pursuing third year Engineering degree in Computer
-Science and secured overall CGPA of 8.6 
-Skills.Computer Science
-Engineer  PRAJWAL S
+Phone:
 9901388056
+Address:
+#201, SB Royal Homes, 3rd main, 18th cross, Hoysalanagar, Horamavu, Bengaluru-
+560016
+Email:
 praju.prajwal238@gmail.com
-Bengaluru,  India
-AWS -Cloud Computing
-Amazon- Present WorkingAttendace Management System
-Django online webpage helps to mark attendance
-online and view internal mark of a students
-Programming
-Skills.
+Prajwal 
+S
+ 
+As a Computer Science Engineer, I am passionate towards learning new technologies that are booming in current industries. I
+will try to be innovative and focus on projects, which helps in the growth of career. Well versed in CSS Styling and web
+designing.
+EDUCATION
+Royal English Medium School
+Matriculation
+June 2016 - April 2017
+Completed matriculation with 97 percentage
+Reva University
+Pre-University
+June 2017 - June 2019
+Completed Pre-University with 93 Percentage.
+MVJ College of Engineering
+Bachelor of Engineering
+August 2019- present
+Currently pursuing third year Engineering degree in Computer Science and secured overall CGPA of 8.6
+SKILLS
+CSS Styling.
+Programming Skills- Python, C , Java Script
+Tools- MS Excel, HTML,CSS,MS word, Visual Studio
+Communication Skills.
+Active planner.
+Leadership
+Time management.
+Web Design.
+PROJECTS
+Web Project
+https://drive.google.com/file/d/1Uz94IWv1qShCVzcdtQGZQzeX0JMoUQWg
+/view?usp=sharing
+January 2022
+Virtual Mobile Emulator Webpage, which includes both database management along with web development.
+CERTIFICATIONS
+Face Recognition Application using Python
+GUVI
+April 2021
+An online platform which provides guidance to built a face recognition App using python
+Introduction to Cloud Computing
+Coursera
+October 2021
+Created using Resumonk - Online Resume Builder

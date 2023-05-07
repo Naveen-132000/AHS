@@ -2,7 +2,19 @@
 
 {% block title %}Display{% endblock %}
 {% block content %}
-<div>
+<html>
+  <head>
+    <script>
+      const theButton = document.querySelector(".button");
+
+      theButton.addEventListener("click", () => {
+          theButton.classList.add("button--loading");
+      });
+  </script>
+    <script src="static\script.js"></script>
+  </head>
+  <body>
+    <div class="loader"></div>
 <div class="upload">
   <div class="wrapper">
     <div class="left">
@@ -23,7 +35,10 @@
 </div><center>
 <form method="post" action="/scrapes" enctype="multipart/form-data" class="form-inline">
     <div class="form-group"style="padding-left: 0px;">
-    <button class="btn-success1" >FIND JOBS <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      
+    <button class="btn-success1" onclick="this.classList.toggle('btn-success1--loading')">
+      <span class="button__text">FIND JOBS <i class="fa fa-arrow-right" aria-hidden="true"></i><span></button>
+    
   </form>
   <form method="post" action="/compares" enctype="multipart/form-data" class="form-inline">
     <div class="form-group" style="padding-left: 0px;">
@@ -36,4 +51,7 @@
   <h2>Found Text in Resume:</h2><br>
   {{Rtext}}
     </div></div>
-</div>{% endblock %}
+</div>
+</body>
+</head>
+{% endblock %}

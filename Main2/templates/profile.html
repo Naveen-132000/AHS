@@ -1,9 +1,14 @@
-{% extends 'layout.html' %}
 
+{% extends 'layout.html' %}
 {% block title %}Profile{% endblock %}
 {% block content %}
+<html><head>
+<script src="static\script.js"></script></head>
+<body>
+    
 <div>
 <div class="profile">
+    
     <center> <h3><?php
         echo "hello world"?>
         Your account details are below:</h3>
@@ -34,5 +39,6 @@
         </tr>
     </table></center>
 </div>
-</div>
+</div></body>
+</html>
 {% endblock %}
