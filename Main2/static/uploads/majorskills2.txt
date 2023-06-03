@@ -275,7 +275,6 @@ information management
 information security
 information technology
 intranet
-ios
 iphone
 it infrastructure
 itil
@@ -595,7 +594,6 @@ web developer
 create a website.
 logo designer
 responsive web design
-
 .net
 algorithms
 android
@@ -648,7 +646,6 @@ information management
 information security
 information technology
 intranet
-ios
 iphone
 it infrastructure
 itil
@@ -908,7 +905,6 @@ photography
 photoshop
 portfolio management
 positioning
-
 process development
 process improvement
 process improvements
@@ -1210,7 +1206,6 @@ web developer
 create a website.
 logo designer
 responsive web design
-
 .net
 algorithms
 android
@@ -1263,7 +1258,6 @@ information management
 information security
 information technology
 intranet
-ios
 iphone
 it infrastructure
 itil

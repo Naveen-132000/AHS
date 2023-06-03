@@ -178,7 +178,31 @@ def upload():
                 with open("static/uploads/Rskills.txt", "w") as f:
                     for skill in skills_set:
                         f.write(skill.upper() + "\n")
-               
+                
+                #Extracting Softskills from resume.
+                with open("static/uploads/softskills.txt",'r') as s:
+                    skills_list1 = [line.strip().lower() for line in s.readlines()]
+                    
+                pattern11 = re.compile("|".join(map(re.escape, skills_list1)), re.IGNORECASE)
+                matches11 = re.findall(pattern11, resume_text.lower())
+                skills_set11 = set(matches11)
+                print("Extracted Skills: ", skills_set11)
+                with open("static/uploads/Rsoftskills.txt", "w") as f:
+                    for skill in skills_set11:
+                        f.write(skill.upper() + "\n")
+                        
+            
+                    #copying all Resume skills into one file
+                with open('static/uploads/Rskills.txt', 'r', encoding='utf-8') as file1:
+                    contents1 = file1.readlines()
+                with open('static/uploads/Rsoftskills.txt', 'r', encoding='utf-8') as file2:
+                    contents2 = file2.readlines()
+
+                with open('static/uploads/Rmerged.txt', 'w', encoding='utf-8') as merged_file:
+                    for line in contents1:
+                        merged_file.write(line.rstrip() + '\n')
+                    for line in contents2:
+                         merged_file.write(line.rstrip() + '\n')               
                
                #Extracting skills from JD
                 with open("static/uploads/majorskills2.txt", 'r') as f:
@@ -189,11 +213,36 @@ def upload():
                 with open("static/uploads/Jskills.txt", "w") as f:
                     for skill in JDtext1:
                         f.write(skill.upper() + "\n")
-                with open('static/uploads/Jskills.txt','r') as f:
-                    JDtext11=f.read()
                 
-               
-               
+                 #Extracting softskills from JD
+                with open("static/uploads/softskills.txt", 'r') as f:
+                        skills_list12 = [line.strip().lower() for line in f.readlines()]
+                        
+                pattern12 = re.compile("|".join(map(re.escape, skills_list12)), re.IGNORECASE)
+                matches12 = re.findall(pattern12, JDtext.lower())
+                JDtext12 = set(matches12)
+                with open("static/uploads/Jsoftskills.txt", "w") as f:
+                    for skill in JDtext12:
+                        f.write(skill.upper() + "\n")
+                        
+                    #copying all jd skills into one file
+                with open('static/uploads/Jskills.txt', 'r', encoding='utf-8') as file1:
+                    contents1 = file1.readlines()
+                with open('static/uploads/Jsoftskills.txt', 'r', encoding='utf-8') as file2:
+                    contents2 = file2.readlines()
+
+                with open('static/uploads/JDmerged.txt', 'w', encoding='utf-8') as merged_file:
+                    for line in contents1:
+                        merged_file.write(line.rstrip() + '\n')
+                    for line in contents2:
+                         merged_file.write(line.rstrip() + '\n')
+                        
+                with open('static/uploads/Jsoftskills.txt','r') as f:
+                    JDsoft=f.read() 
+                with open('static/uploads/Rsoftskills.txt','r') as f:
+                    Rsoft=f.read()     
+                with open('static/uploads/Jskills.txt','r') as f:
+                    JDtext11=f.read()                     
                 with open('static/uploads/Rskills.txt','r') as f:
                     filecontent=f.read()
                 #cur.execute(" INTO userdata (Rskillfname,Rskillcontent, uploaded_on) VALUES (%s,%s, %s)",[file.filename,filecontent, now])
@@ -207,7 +256,7 @@ def upload():
             print(content)
             print(JDtext11)
             print('\n'.join(JDtext1))
-            return render_template('display.html',content=content,JDtext=JDtext11,Rtext=Rtext1)
+            return render_template('display.html',content=content,JDtext=JDtext11,Rtext=Rtext1,JDsoft=JDsoft,Rsoft=Rsoft)
     return render_template('upload.html')
 
 if __name__ == "__main__":

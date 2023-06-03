@@ -10,29 +10,24 @@
       theButton.addEventListener("click", () => {
           theButton.classList.add("button--loading");
       });
-  </script>
+    </script>
     <script src="static\script.js"></script>
   </head>
   <body>
     <div class="loader"></div>
-<div class="upload">
-  <div class="wrapper">
-    <div class="left">
-      <h2>Found Skills (Resume):</h2>
-      {{content}}
-    </div>
-  <div class="right">
-    <h2>Found Skills (JD):</h2>
-        {{JDtext}}
-    
-   
-   <!-- {% for item in JDtext %}
-		<p style="padding: 10px 0;whitespace: pre">{{ item }}</p>
-	{% endfor %}-->
-    
-  </div>
-</div>
-</div><center>
+    <div class="upload">
+        <div class="wrapper">
+           <div class="left">
+             <h2>Found Core Skills (Resume):</h2>
+                  {{content}}
+           </div>
+          <div class="right">
+             <h2>Found Core Skills (JD):</h2>
+                  {{JDtext}}
+          </div>
+        </div>
+      </div>
+<center>
 <form method="post" action="/scrapes" enctype="multipart/form-data" class="form-inline">
     <div class="form-group"style="padding-left: 0px;">
       
@@ -45,6 +40,18 @@
     <button class="btn-success2" >COMPARE JD AND RESUME<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
   </form></center>
 </div>
+</div>
+<div class="upload">
+  <div class="wrapper">
+     <div class="left">
+       <h2>Soft Skills (Resume):</h2>
+            {{Rsoft}}
+     </div>
+    <div class="right">
+       <h2>Soft Skills (JD):</h2>
+            {{JDsoft}}
+    </div>
+  </div>
 </div>
 <div class="wrapper">
 <div class="Rtext">

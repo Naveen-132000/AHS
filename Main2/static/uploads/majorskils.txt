@@ -31,7 +31,6 @@ Tableau
 Analysis
 Linux
 Javascript
-Communication
 AWS
 C
 JAVA
@@ -48,14 +47,7 @@ Teamwork
 Platform expertise
 Content creation
 Analytics
-Communication
-Creativity
-Strategic thinking
-Communication
 Web Design
-Time management
-Tools usage
-Planning
 Mysql
 BOOTSTRAP
 Kotlin
@@ -77,7 +69,6 @@ Elixir
 Dart
 clojure
 Salesforce
-talent management
 teaching
 MATLAB
 machine learning
