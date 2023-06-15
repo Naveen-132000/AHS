@@ -169,7 +169,7 @@ def upload():
                #Extracting skills from resume
                 with open("static/uploads/Resumewords.txt", "r") as f:
                     resume_text = f.read()
-                with open("static/uploads/majorskils.txt", 'r') as f:
+                with open("static/uploads/majorskills2.txt", 'r') as f:
                         skills_list = [line.strip() for line in f.readlines()]
                 pattern = re.compile("|".join(map(re.escape, skills_list)), re.IGNORECASE)
                 matches = re.findall(pattern, resume_text.lower())
@@ -253,8 +253,6 @@ def upload():
         cur.close()     
         with open("static/uploads/Rskills.txt", "r") as f:
             content = f.read()
-            print(content)
-            print(JDtext11)
             print('\n'.join(JDtext1))
             return render_template('display.html',content=content,JDtext=JDtext11,Rtext=Rtext1,JDsoft=JDsoft,Rsoft=Rsoft)
     return render_template('upload.html')

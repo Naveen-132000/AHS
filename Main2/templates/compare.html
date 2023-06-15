@@ -124,24 +124,91 @@
               </div>
               <div class="points-label">Total Match</div>
             </div>
-          </div></div>
+          </div></div><center>
+          <form method="post" action="/scrapes" enctype="multipart/form-data" class="form-inline">
+            <div class="form-group"style="padding-left: 0px;">
+              
+            <button class="btn-success1" onclick="this.classList.toggle('btn-success1--loading')">
+              <span class="button__text">Find Jobs <i class="fa fa-arrow-right" aria-hidden="true"></i><span></button>
+            
+          </form></center>
 
     <script>
         function drawChart(percentage, context, centerX, centerY, radius, startAngle, animationProgress) {
             // Clear canvas
             context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
-            var colorRanges = [
+            /*var colorRanges = [
             { percentage: 25, color: "#ff0000" },     // Red
             { percentage: 50, color: "#ffa500" },   //orange
-            { percentage: 75, color: "#00ff00" },   //blue
-            { percentage: 100, color: "rgb(16, 185, 129)" }   // Green
+            { percentage: 75, color: "#59981A" },   //blue
+            { percentage: 100, color: "rgb(0, 140, 255)" }   // Blue
         ];
 
         // Find the appropriate color based on the percentage
-        var color = colorRanges.find(function (range) {
-            return percentage <= range.percentage;
-        }).color;
+        //var color = colorRanges.find(function (range) {
+           // return percentage <= range.percentage;
+        //}).color;
+
+
+        var color;
+    for (var i = 0; i < colorRanges.length; i++) {
+        var range = colorRanges[i];
+        if (percentage <= range.percentage) {
+            color = range.color;
+            break;
+        }
+    }
+    if (!color) {
+        color = colorRanges[colorRanges.length - 1].color; // Default to the last color
+    }
+    var colorRanges = [
+    { start: 0, end: 25, color: "#ff0000" },     // Red
+    { start: 25, end: 50, color: "#ffa500" },     // Orange
+    { start: 50, end: 75, color: "#59981A" },     // Green
+    { start: 75, end: 100, color: "rgb(0, 140, 255)" }   // Blue
+];
+
+// Find the appropriate color based on the current animation progress
+var currentProgress = animationProgress * percentage;
+var color;
+for (var i = 0; i < colorRanges.length; i++) {
+    var range = colorRanges[i];
+    if (currentProgress >= range.start && currentProgress <= range.end) {
+        color = range.color;
+        break;
+    }
+}
+if (!color) {
+    color = colorRanges[colorRanges.length - 1].color; // Default to the last color
+}*/
+var colorRanges = [
+        { start: 0, end: 25, color: ['#ff0000', '#ffa500'] },     // Red to Orange
+        { start: 25, end: 50, color: ['#ffa500', '#59981A'] },     // Orange to Green
+        { start: 50, end: 75, color: ['#59981A', '#21B6A8'] },     // Green to Blue
+        { start: 75, end: 100, color: ['#21B6A8', '#0000FF'] }   // Blue to Red
+    ];
+
+    // Find the appropriate color gradient based on the current animation progress
+    var currentProgress = animationProgress * percentage;
+    var colorGradient;
+    for (var i = 0; i < colorRanges.length; i++) {
+        var range = colorRanges[i];
+        if (currentProgress >= range.start && currentProgress <= range.end) {
+            colorGradient = range.color;
+            break;
+        }
+    }
+    if (!colorGradient) {
+        colorGradient = colorRanges[colorRanges.length - 1].color; // Default to the last color gradient
+    }
+
+    // Calculate the color based on the current animation progress
+    var colorIndex = currentProgress - colorRanges[i].start;
+    var colorStart = colorGradient[0];
+    var colorEnd = colorGradient[1];
+    var color = interpolateColor(colorStart, colorEnd, colorIndex, colorRanges[i].end - colorRanges[i].start);
+
             
             // Draw the background circle
             context.beginPath();
@@ -177,6 +244,30 @@
             context.textBaseline = "middle";
             context.fillText(percentage + "%", centerX, centerY);
         }
+        function interpolateColor(colorStart, colorEnd, index, range) {
+          var startRGB = hexToRGB(colorStart);
+          var endRGB = hexToRGB(colorEnd);
+      
+          var r = startRGB.r + (index / range) * (endRGB.r - startRGB.r);
+          var g = startRGB.g + (index / range) * (endRGB.g - startRGB.g);
+          var b = startRGB.b + (index / range) * (endRGB.b - startRGB.b);
+      
+          return rgbToHex(r, g, b);
+      }
+      
+      // Helper function to convert hex color to RGB object
+      function hexToRGB(hex) {
+          var bigint = parseInt(hex.replace("#", ""), 16);
+          var r = (bigint >> 16) & 255;
+          var g = (bigint >> 8) & 255;
+          var b = bigint & 255;
+          return { r: r, g: g, b: b };
+      }
+      
+      // Helper function to convert RGB color to hex string
+      function rgbToHex(r, g, b) {
+          return "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+      }
 
         function animateChart(percentage) {
             var canvas = document.getElementById("chart");
@@ -225,9 +316,9 @@
     
           function calculateColor(currentWidth) {
             var red = 255;
-            var green = Math.round(255 - (255 * (currentWidth / 100)));
+            var greens = Math.round(255 - (255 * (currentWidth / 100)));
             var blue = 0;
-            return 'rgb(' + blue + ',' + green + ',' + red + ')';
+            return 'rgb(' + blue + ',' + greens + ',' + red + ')';
           }
     
           function animationStep() {
@@ -253,14 +344,49 @@
         var matchPercentage3 = {{match_rate}}; // Replace with your actual match percentage for bar 3
         animatePointsBar('progress3', 'points-text3', matchPercentage3);
       </script>
-    <div><center>
+      <div class="upload">
+        <center><h2>Core Skills</h2></center>
+        <div class="wrapper">
+          
+           <div class="left">
+             <h2>Found Core Skills (Resume):</h2>
+                  {{Rskills}}
+           </div>
+          <div class="right">
+             <h2>Found Core Skills (JD):</h2>
+                  {{JDskills}}
+          </div>
+        </div>
+      </div>
+      <div class="upload">
+        <center><h2>Soft Skills</h2></center>
+        <div class="wrapper">
+           <div class="left">
+             <h2>Soft Skills (Resume):</h2>
+                  {{Rsoft}}
+           </div>
+          <div class="right">
+             <h2>Soft Skills (JD):</h2>
+                  {{JDsoft}}
+          </div>
+        </div>
+      </div>
+      
+      </div>
+    <div>
+      <center>
         <div class="upload" style="font-size:20px">
-        <h2 style="background-color:rgb(0, 140, 255);color:black;">Common Skills found </h2>
+        <h2 style="background-color:rgb(0, 140, 255);color:black;padding: 10px;">Common Skills found </h2>
         {{Cskills}}
         
     
-    <h2 style="background-color:rgb(0, 140, 255);color:black;">Job Description Match Report </h2></center>
+    <h2 style="background-color:rgb(0, 140, 255);color:black;padding: 10px;">Job Description Match Report </h2>
+    <div>
+      <h2>Contact info</h2>
+      Phone no:{{Phno}}<br>
+      Email:{{email}}
     </div>
+    </div></center>
 
 </body>
 </html>

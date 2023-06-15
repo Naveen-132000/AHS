@@ -4,12 +4,21 @@
 {% block content %}
 <html>
   <head>
+    
     <script>
       const theButton = document.querySelector(".button");
+      const jdText = "{{ JDtext }}"; // Replace this with the actual value of JDtext
 
       theButton.addEventListener("click", () => {
-          theButton.classList.add("button--loading");
+        theButton.classList.add("button--loading");
       });
+
+      // Check if JDtext is empty and add class to hide cursor if it is
+      if (!jdText) {
+        document.addEventListener("DOMContentLoaded", function() {
+          document.body.classList.add("hide-cursor");
+        });
+      }
     </script>
     <script src="static\script.js"></script>
   </head>
@@ -28,17 +37,37 @@
         </div>
       </div>
 <center>
+  <form method="post" action="/compares" enctype="multipart/form-data" class="form-inline">
+    <div class="form-group" style="padding-left: 0px;">
+    <!--<button class="btn-success2" >COMPARE JD AND RESUME<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    -->
+    {% if JDtext %}
+      <button class="btn-success2" style="cursor:pointer">
+        COMPARE JD AND RESUME
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    {% else %}
+      <button class="btn-success2"  style="cursor:not-allowed" onclick="showAlert(event)">
+        COMPARE JD AND RESUME
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    {% endif %}
+  
+  </form>
+  <script>
+    function showAlert(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      alert("No JD Found! Go Back to previous page to add");
+    }
+  </script>
 <form method="post" action="/scrapes" enctype="multipart/form-data" class="form-inline">
     <div class="form-group"style="padding-left: 0px;">
       
     <button class="btn-success1" onclick="this.classList.toggle('btn-success1--loading')">
-      <span class="button__text">FIND JOBS <i class="fa fa-arrow-right" aria-hidden="true"></i><span></button>
+      <span class="button__text">Find Jobs <i class="fa fa-arrow-right" aria-hidden="true"></i><span></button>
     
   </form>
-  <form method="post" action="/compares" enctype="multipart/form-data" class="form-inline">
-    <div class="form-group" style="padding-left: 0px;">
-    <button class="btn-success2" >COMPARE JD AND RESUME<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-  </form></center>
+  </center>
 </div>
 </div>
 <div class="upload">

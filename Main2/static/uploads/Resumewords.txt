@@ -43,4 +43,17 @@ Amazon- Present WorkingAttendace Management System
 Django online webpage helps to mark attendance
 online and view internal mark of a students
 Programming
-Skills.
+Skills.DATABASE
+PROJECT MANAGEMENT
+TROUBLESHOOTING
+TECHNICAL
+ARCHITECTURE
+ENGINEERING
+.NET
+COMPUTER SCIENCE
+LAN
+FRAMEWORKS
+BI
+CSS
+TESTING
+PROGRAMMING

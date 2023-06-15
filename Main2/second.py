@@ -1,51 +1,49 @@
-from flask import Blueprint,render_template
-from serpapi import GoogleSearch
+from flask import Blueprint, render_template
+import requests
 
-second = Blueprint("second",__name__,static_folder="static",template_folder="templates")
-@second.route("/",methods=["POST","GET"])
+second = Blueprint("second", __name__, static_folder="static", template_folder="templates")
 
 
-def home():
-    file2 = open('static/uploads/TandL.txt','w',encoding="utf-8")
-    file1=open('static/uploads/Rskills.txt','r')
-    lines=file1.readlines()
-    count=0
-    for line in lines:
-        count+=1
-        params = {
-    #"api_key": "f9efcd58e8de137f2122cc2f86e66e786fa3b1ab247fafedba4e440b3b9ee7c1",
-    "api_key": "9998b610e8e9fe2032ab34da16f4639cd13d17e2b30d01e9835d25983afa321c",
-    
-    "engine": "google",
-    "q": line+" jobs india",
-    "location": "Austin, Texas, United States",
-    "google_domain": "google.com",
-    
-    "gl": "us",
-    "hl": "en",
-        }
+@second.route("/", methods=["POST", "GET"])
+def scrape_google_jobs():
+    #api_key = 'AIzaSyBB5NOC1aCTGNj_1CTkBEaSWj3RhhDVZRs'
+    api_key='AIzaSyAtCm_j_ukjUGuYSOjsLdg_sXD-C9eLOTM'# Replace with your Google Search API key
+    #cx = '56d3541d224974d0c'  # Replace with your Custom Search Engine (CX) ID
+    cx='56d3541d224974d0c'
+    with open('static/uploads/Rskills.txt', 'r') as file:
+        queries = file.readlines()
 
-        search = GoogleSearch(params)
-        results = search.get_dict()
+    job_links = []
+    titles = []
+
+    for query in queries:
+        query = query.strip() + " job for freshers in India"
+
         try:
-            for result in results["jobs_results"]["jobs"]:
-                title=result["title"]   
-                link=result["link"]
-                print(title)
-                print(link)
-                #file2.write(title,end=",")
-                #file2.write(link,end="\n")
-                print(title,file=file2,end=", ")
-                print(link,file=file2,end="\n")
+            # Prepare the API request URL
+            url = f"https://www.googleapis.com/customsearch/v1?key={api_key}&cx={cx}&q={query}&num=2"
+
+            # Send a GET request to the API
+            response = requests.get(url)
+            response.raise_for_status()
+
+            # Parse the JSON response
+            data = response.json()
+
+            # Extract job links from the response
+            if 'items' in data:
+                for item in data['items']:
+                    title = item['title']
+                    url = item['link']
+                    job_links.append({'title': title, 'url': url})
+                    titles.append(title)
         except:
-           pass
-    titles_and_links = []
-    with open('static/uploads/TandL.txt', 'r') as f:
-        for line in f:
-            try:
-                title, link = line.strip().split(',',1)
-                titles_and_links.append((title, link))
-            except ValueError:
-                pass
-                
-    return render_template('scraped.html',titles_and_links=titles_and_links)
+            pass
+   
+    with open('static/uploads/job_data.txt', 'w') as outfile:
+        for job in job_links:
+            outfile.write(f"Title: {job['title']}\n")
+            outfile.write(f"URL: {job['url']}\n\n")
+    
+
+    return render_template('scraped.html', titles=titles, links=job_links)

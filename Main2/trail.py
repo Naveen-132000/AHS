@@ -1,26 +1,38 @@
-import re
+import requests
 
-file_list = ["static/uploads/Rmerged.txt", "static/uploads/JDmerged.txt"]
-resume_text = ""
-skills_set1 = set()
+def scrape_google_jobs(query):
+    api_key = 'AIzaSyCaAxhGum_rvXgkHyulRcf8prMEkVxgqVU'  # Replace with your Google Search API key
+    cx = 'a3b8b859565de45b5'  # Replace with your Custom Search Engine (CX) ID
 
-for file_name in file_list:
-    with open(file_name, 'r') as file:
-        if file_name == "static/uploads/Rmerged.txt":
-            resume_text = file.read()
-        else:
-            skills_list = [line.strip() for line in file.readlines()]
-            pattern = re.compile("|".join(map(re.escape, skills_list)), re.IGNORECASE)
-            matches = re.findall(pattern, resume_text.upper())
-            skills_set1.update(matches)
+    # Prepare the API request URL
+    url = f"https://www.googleapis.com/customsearch/v1?key={api_key}&cx={cx}&q={query}&num=5"
 
-with open("static/uploads/Common.txt", "w") as f:
-    for skill in skills_set1:
-        f.write(skill + "\n")
+    # Send a GET request to the API
+    response = requests.get(url)
+    response.raise_for_status()
 
-total_skills_file1 = len(set([line.strip() for line in open(file_list[0], 'r')]))
-match_rate = len(skills_set1) / total_skills_file1 * 100
-match_rate = round(match_rate)
+    # Parse the JSON response
+    data = response.json()
 
-print("Match Rate: ", match_rate)
-print("Extracted Skills: ", skills_set1)
+    # Extract job information from the response
+    job_data = []
+    if 'items' in data:
+        for item in data['items']:
+            title = item['title']
+            url = item['link']
+            description = item['snippet']
+
+            job_data.append({'title': title, 'url': url, 'description': description})
+
+    return job_data
+
+# Example usage
+query = "python developer jobs"
+results = scrape_google_jobs(query)
+
+# Print the scraped job data
+for result in results:
+    print(f"Title: {result['title']}")
+    print(f"URL: {result['url']}")
+    print(f"Description: {result['description']}")
+    print()

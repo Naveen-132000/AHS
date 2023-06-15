@@ -100,7 +100,6 @@ policies
 portfolio management
 presentations
 process improvement
-project planning
 proposal
 prospecting
 purchase orders
@@ -128,16 +127,8 @@ strategic planning
 strategic plans
 strategy
 tableau
-tax
-technical knowledge
-transactions
-underwriting
 vendor management
-vendors
-beverage
 billing
-build relationships
-client relationships
 client service
 consumers
 customer experience
@@ -181,8 +172,6 @@ administrative support
 admissions
 biology
 chemistry
-coaching
-computer science
 computer software
 counsel
 counseling
@@ -198,16 +187,8 @@ recruitment
 relationship building
 research projects
 researching
-spelling
-sports
-teaching
 training
-writing
 case management
-cpr
-fda
-fitness
-health
 healthcare
 hospital
 logistics
@@ -226,9 +207,6 @@ therapeutic
 .net
 algorithms
 android
-architecture
-architectures
-audio
 autocad
 aws
 big data
@@ -238,12 +216,10 @@ c (programming language)
 c#
 c++
 cad
-certification
 cisco
 cloud
 compliance
 computer applications
-computer science
 controls
 css
 d (programming language)
@@ -253,7 +229,6 @@ data entry
 data management
 database
 datasets
-design
 development activities
 digital marketing
 digital media
@@ -314,7 +289,6 @@ root cause
 routing
 saas
 sas
-sci
 scripting
 scrum
 sdlc
@@ -325,16 +299,7 @@ software development life cycle
 software engineering
 sql
 sql server
-tablets
-technical
-technical issues
-technical knowledge
-technical skills
-technical support
-test cases
-test plans
 testing
-troubleshooting
 ui
 unix
 usability
@@ -349,7 +314,6 @@ assembly
 access platform
 ad creative/impression/inventory/rotation analysis/configuration/deployment/design
 application technology
-architecture
 artificial intelligence
 banner advertisement
 bss/ oss
@@ -425,7 +389,6 @@ product testing
 professional service
 program management
 programming / coding
-project management
 quality assurance / code testing
 research & development
 resource management
@@ -449,8 +412,6 @@ systems administration
 systems configuration
 systems deployment
 systems development life cycle (sdlc)
-technical documentation
-technical support
 technology stack
 testing
 turnkey
@@ -552,7 +513,6 @@ bpo non voice
 customer care
 customer care executive
 outbound
-technical support
 lead generation
 operations
 customer service executive
@@ -597,9 +557,6 @@ responsive web design
 .net
 algorithms
 android
-architecture
-architectures
-audio
 autocad
 aws
 big data
@@ -609,12 +566,10 @@ c (programming language)
 c#
 c++
 cad
-certification
 cisco
 cloud
 compliance
 computer applications
-computer science
 controls
 css
 d (programming language)
@@ -624,7 +579,6 @@ data entry
 data management
 database
 datasets
-design
 development activities
 digital marketing
 digital media
@@ -685,7 +639,6 @@ root cause
 routing
 saas
 sas
-sci
 scripting
 scrum
 sdlc
@@ -696,16 +649,8 @@ software development life cycle
 software engineering
 sql
 sql server
-tablets
-technical
-technical issues
-technical knowledge
-technical skills
 technical support
-test cases
-test plans
 testing
-troubleshooting
 ui
 unix
 usability
@@ -729,16 +674,7 @@ circuits
 construction
 cost reduction
 cross-functional team
-distribution
-documentation
-documenting
-drafting
-drawings
-driving record
-electrical
 electrical engineering
-electronics
-engineering
 fabrication
 installation
 instructional design
@@ -764,10 +700,6 @@ product knowledge
 product line
 product marketing
 product quality
-project delivery
-project management
-project management skills
-project plan
 qa
 quality assurance
 quality control
@@ -961,7 +893,6 @@ workflows
 access platform
 ad creative/impression/inventory/rotation analysis/configuration/deployment/design
 application technology
-architecture
 artificial intelligence
 banner advertisement
 bss/ oss
@@ -1061,8 +992,6 @@ systems administration
 systems configuration
 systems deployment
 systems development life cycle (sdlc)
-technical documentation
-technical support
 technology stack
 testing
 turnkey
@@ -1209,9 +1138,6 @@ responsive web design
 .net
 algorithms
 android
-architecture
-architectures
-audio
 autocad
 aws
 big data
@@ -1221,12 +1147,11 @@ c (programming language)
 c#
 c++
 cad
-certification
 cisco
 cloud
 compliance
 computer applications
-computer science
+computer science engineering
 controls
 css
 d (programming language)
@@ -1236,7 +1161,6 @@ data entry
 data management
 database
 datasets
-design
 development activities
 digital marketing
 digital media
@@ -1297,7 +1221,6 @@ root cause
 routing
 saas
 sas
-sci
 scripting
 scrum
 sdlc
@@ -1309,15 +1232,7 @@ software engineering
 sql
 sql server
 tablets
-technical
-technical issues
-technical knowledge
-technical skills
-technical support
-test cases
-test plans
 testing
-troubleshooting
 ui
 unix
 usability
