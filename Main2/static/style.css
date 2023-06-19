@@ -578,4 +578,30 @@ body.loggedin {
     border-radius: 4px;
     cursor: pointer;
   }
+  .print-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ededed;
+    color: rgb(100, 100, 100);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    align-items: right;
+}
+
+.print-button:hover {
+    background-color: #6d6d6d;
+    color: rgb(0, 0, 0);
+}
   
+  @media print {
+      h1, h2, h3, h4, h5, h6 {
+          background-color: rgb(46, 185, 201);
+          color: black;
+      }
+  }  .print-button-container {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -81,7 +81,7 @@ def common():
 
     resume_text = ""
 
-    # Read resume text from a text file
+# Read resume text from a text file
     file_path = 'static/uploads/Resumewords.txt'
     try:
         with open(file_path, 'r') as file:
@@ -90,21 +90,20 @@ def common():
         print(f"File '{file_path}' not found.")
         exit()
 
-    phone_regex = re.compile(r'\b(?:\+\d{1,3}\s+)?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})\b')
-    email_regex = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+    phone_number = re.search(r'\d{10}', resume_text)
+    email_match = re.search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', resume_text)
 
-    phone_number = re.search(phone_regex, resume_text)
-    email = re.search(email_regex, resume_text)  # Using re.I flag for case-insensitive matching
-
-    phone_number = phone_number.group(0) if phone_number else None
-    email = email.group(0) if email else None
+    email = email_match.group(0) if email_match else None
 
     if phone_number:
+        phone_number = phone_number.group(0)
         print("Phone number:", phone_number)
     else:
         print("Phone number not found in the resume.")
 
     if email:
+    # Remove the trailing "Email" text from the email string
+        email = email.replace("Email", "")
         print("Email:", email)
     else:
         print("Email not found in the resume.")
@@ -118,11 +117,23 @@ def common():
         JDsoft=f.read() 
     with open('static/uploads/Rsoftskills.txt','r') as f:
         Rsoft=f.read()
+        
+    word_count = len(resume_text)
+    patternL = r"\b(\d+)[+\s]*(?:years?|yrs?)\b"
+    matchesL = re.findall(patternL, resume_text, re.IGNORECASE)
 
+    if matchesL:
+        print("Years of experience found in the resume:")
+        for years in matchesL:
+            print("- " + years)
+            job_level_match= years+ "Experience"
+    else:
+        print("No years of experience found in the resume.")
+        job_level_match = "Fresher"
     
     
     return render_template('compare.html',Cskills=Cskills,match_rate=match_rate,smatch_rate=smatch_rate,hmatch_rate=hmatch_rate,
-                           Rskills=RSkills,JDskills=JDtext11,JDsoft=JDsoft,Rsoft=Rsoft,Phno=phone_number,email=email)
+                           Rskills=RSkills,JDskills=JDtext11,JDsoft=JDsoft,Rsoft=Rsoft,Phno=phone_number,email=email,wc=word_count,JLM=job_level_match)
 '''
 def softcommon():
     sfile_list = ["static/uploads/Rsoftskills.txt", "static/uploads/Jsoftskills.txt"]

@@ -1,44 +1,40 @@
 import re
-from geotext import GeoText
-from usaddress import parse, tag
 
-def extract_address(resume_text):
-    # Extract potential locations using GeoText
-    places = GeoText(resume_text)
-    locations = places.cities + places.countries
+def find_education_match(jd_text, resume_text):
+    jd_qualifications = extract_qualifications(jd_text)
+    resume_qualifications = extract_qualifications(resume_text)
 
-    if locations:
-        # Combine potential locations into a single string
-        address = ' '.join(locations)
-        address = re.sub(r'\b(\w+),$', r'\1', address)  # Remove trailing comma
+    matched_qualifications = []
+    for jd_qualification in jd_qualifications:
+        for resume_qualification in resume_qualifications:
+            if jd_qualification.lower() == resume_qualification.lower():
+                matched_qualifications.append(resume_qualification)
 
-        # Use usaddress library to parse and tag address components
-        parsed_address = parse(address)
-        tagged_address = tag(address)
+    return matched_qualifications
 
-        # Filter and combine tagged address components
-        filtered_address = []
-        for component, tag in tagged_address:
-            if 'Address' in tag:
-                filtered_address.append(component)
-        
-        final_address = ' '.join(filtered_address)
-        return final_address
-    else:
-        return None
+def extract_qualifications(text):
+    pattern = r"(?i)\b(?:education|qualification|degree)\b(?:.*?\b(?:in|from)\b)?\s*([a-zA-Z\s]+)"
+    matches = re.findall(pattern, text)
+    qualifications = [match.strip() for match in matches]
+    return qualifications
 
-# Read resume text from a text file
-file_path = 'static/uploads/Resumewords.txt'
-try:
-    with open(file_path, 'r') as file:
-        resume_text = file.read()
-except FileNotFoundError:
-    print(f"File '{file_path}' not found.")
-    exit()
+# Example usage
+jd_text = """
+We are looking for a candidate with the following qualifications:
+- Bachelor's degree in Computer Science or a related field
+- Master's degree is a plus
+"""
 
-address = extract_address(resume_text)
+resume_text = """
+I have a Bachelor's degree in Computer Science from XYZ University.
+Prior to that, I completed my high school education at ABC School.
+"""
 
-if address:
-    print("Address:", address)
+matched_educations = find_education_match(jd_text, resume_text)
+
+if matched_educations:
+    print("Matched education qualifications:")
+    for qualification in matched_educations:
+        print("- " + qualification)
 else:
-    print("Address not found in the resume.")
+    print("No matched education qualifications found.")
